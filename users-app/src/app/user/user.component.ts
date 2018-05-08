@@ -12,13 +12,27 @@ export class UserComponent implements OnInit {
     new User(1, "First", "Last", "email@email.com"),
     new User(2, "First", "Last", "email@email.com"),
     new User(3, "First", "Last", "email@email.com")
-
   ];
 
   constructor(private _userServive: UserService) { }
 
   ngOnInit() {
     //this.getUsers();
+  }
+
+  create(user: User){
+    this.users.push(user);
+  }
+
+  destroy(user: User){
+    const i = this.users.indexOf(user);
+    this.users.splice(i, 1);
+  }
+
+  update(users: any){
+    console.log(users);
+    const i = this.users.indexOf(users.orignal)
+    this.users[i] = users.edited;
   }
 
   getUsers(){
